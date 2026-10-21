@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f8f1">
+  <meta name="description" content="Discover delicious recipes, explore ingredients, and save your favorite meals.">
+  <title>FreshBite | Recipe Finder</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a href="#" class="logo" aria-label="FreshBite home">
+      <span class="logo-icon">✳</span> Fresh<span>Bite</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#discover">Discover</a>
+      <button id="favoritesNav" type="button">♡ Favorites <span id="favoriteCount">0</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow"><span class="live-dot"></span> YOUR DAILY DOSE OF DELICIOUS</span>
+        <h1>Find something<br> <span>delicious.</span></h1>
+        <p>Discover recipes, explore new flavors, and find your next favorite meal.</p>
+
+        <form id="searchForm" class="search-form">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search recipes or ingredients..."
+            aria-label="Search recipes or ingredients"
+            required
+          >
+          <button type="submit" id="searchButton">Find Recipes</button>
+        </form>
+
+        <div class="search-options">
+          <label class="search-mode">
+            <input type="radio" name="searchMode" value="name" checked>
+            Recipe name
+          </label>
+          <label class="search-mode">
+            <input type="radio" name="searchMode" value="ingredient">
+            Main ingredient
+          </label>
+        </div>
+
+        <div class="popular-searches">
+          <span>Popular:</span>
+          <button type="button" data-query="Chicken">Chicken</button>
+          <button type="button" data-query="Pasta">Pasta</button>
+          <button type="button" data-query="Paneer">Paneer</button>
+          <button type="button" data-query="Salad">Salad</button>
+        </div>
+      </div>
+      <div class="hero-decoration" aria-hidden="true">
+        <span class="decoration-circle"></span>
+        <span class="decoration-leaf">✿</span>
+        <span class="decoration-text">Cook. Eat. Repeat.</span>
+      </div>
+    </section>
+
+    <section id="discover" class="discover-section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">A LITTLE FOOD INSPIRATION</span>
+          <h2 id="sectionTitle">Explore recipes</h2>
+          <p id="sectionSubtitle">Find the perfect dish for your next meal.</p>
+        </div>
+        <button type="button" id="showAllButton" class="text-button hidden">
+          ← All recipes
+        </button>
+      </div>
+
+      <div class="filter-bar">
+        <label>
+          <span class="sr-only">Filter by category</span>
+          <select id="categoryFilter">
+            <option value="">All categories</option>
+          </select>
+        </label>
+
+        <label>
+          <span class="sr-only">Sort recipes</span>
+          <select id="sortFilter">
+            <option value="default">Sort: Default</option>
+            <option value="az">Name: A–Z</option>
+            <option value="za">Name: Z–A</option>
+          </select>
+        </label>
+
+        <span id="resultCount" class="result-count"></span>
+      </div>
+
+      <div id="statusMessage" class="status-message" role="status" aria-live="polite">
+        <span class="status-icon">✳</span>
+        <h3>What are you craving today?</h3>
+        <p>Search for a dish or choose a category to get started.</p>
+      </div>
+
+      <div id="recipeGrid" class="recipe-grid"></div>
+
+      <div class="pagination">
+        <button type="button" id="loadMoreButton" class="outline-button hidden">
+          Load more recipes
+        </button>
+      </div>
+    </section>
+
+    <section class="tip-banner">
+      <div class="tip-icon">✦</div>
+      <div>
+        <h3>Good food starts with curiosity.</h3>
+        <p>Try a new recipe today and make it your own.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" class="logo">✳ Fresh<span>Bite</span></a>
+    <p>Made for food lovers, one recipe at a time.</p>
+    <small>Recipe data provided by TheMealDB.</small>
+  </footer>
+
+  <div id="recipeModal" class="modal hidden"
+       role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <section class="modal-panel">
+      <button type="button" id="closeModal" class="close-modal"
+              aria-label="Close recipe details">×</button>
+      <div id="modalContent"></div>
+    </section>
+  </div>
+</body>
+</html>
